@@ -1,0 +1,69 @@
+<!-- project_name/templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Log In page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <
+    
+    <style>
+        
+        body {
+            background-image: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Style for the login card */
+        .card {
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5 ">
+    <div class="row d-flex justify-content-center ">
+        <div class="col-md-6    ">
+            <div class="card bg-dark text-white ">
+                <div class="card-body p-5 text-center">
+                    
+                    <h2 class="fw-bold mb-2 text-uppercase">Admin Login</h2>
+                    <p class="text-white-50 ">Please enter your details!</p>
+                    
+                    <form action="/admin_login" method="POST">
+                        {% csrf_token %}
+
+                    <div class="form-outline form-white mb-4">
+                        <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="Enter your username" >
+
+                    </div>
+                   
+                    <div class="form-outline form-white mb-4">
+                        <input type="password" id="pass1" name="pass1" class="form-control form-control-lg" placeholder="Enter a password" >
+
+                    </div>
+                    
+                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Log In</button>
+                    <!-- {% if user.is_authenticated %}
+                    {% else %}
+                    {{ messages }}
+                    {% endif %} -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

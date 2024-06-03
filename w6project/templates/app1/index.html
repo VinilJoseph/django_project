@@ -1,0 +1,85 @@
+<!-- project_name/templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add any additional CSS or Bootstrap CDN links here -->
+    
+    <style>
+        /* Add CSS styles here */
+        body {
+            /* Set background image */
+            background-image: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+            /* Center and cover the background image */
+            background-size: cover;
+            background-position: center;
+            /* Height of the background image */
+            height: 100vh;
+            /* Display flex to align content */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Style for the login card */
+        .card {
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+    {% csrf_token %}
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card bg-dark text-white">
+                <div class="card-body p-5 text-center">
+
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                        <span aria-hidden="true">&times;</span>
+
+                    </div>
+
+                    {% endfor %}
+
+                    {% if user.is_authenticated %}
+                    <h3>Hello {{fname}} </h3>
+                    <h4>You are successfully logged in.</h4>
+                    <p class="text-white-50 mb-5">### Welcome to Vinils page ###</p>
+                    <a href="{% url 'signout' %}" class="btn btn-outline-light btn-lg px-5 mt-3">SignOut</a>
+
+                    {% else %}
+
+                    <a href="{% url 'signup' %}" class="btn btn-outline-light btn-lg px-5">SignUp</a>
+
+                    <a href="{% url 'signin' %}" class="btn btn-outline-light btn-lg px-5">SignIN</a>
+                    <h3>{{ message }}</h3>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Add any additional JavaScript or Bootstrap CDN links here -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
